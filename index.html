@@ -1,154 +1,387 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Você ❤️</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<title>Para Você ❤️</title>
+    :root {
+      --rosa1: #ff5f8f;
+      --rosa2: #ff7eb3;
+      --rosa3: #ffb3c7;
+      --branco: rgba(255, 255, 255, 0.92);
+      --vidro: rgba(255, 255, 255, 0.12);
+      --borda: rgba(255, 255, 255, 0.25);
+      --sombra: 0 15px 45px rgba(0, 0, 0, 0.25);
+    }
 
-<style>
+    body {
+      overflow-y: scroll;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow: hidden;
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: white;
+      background:
+        radial-gradient(circle at top left, #ff9ebb 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #ff6fa0 0%, transparent 35%),
+        linear-gradient(135deg, #ff4f81, #ff7eb3, #ff8fab);
+      background-size: 200% 200%;
+      animation: fundoAnimado 10s ease infinite;
+      position: relative;
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+    @keyframes fundoAnimado {
+      0% {
+        background-position: 0% 50%;
+      }
 
-body{
-overflow-y: scroll;
-background: linear-gradient(135deg,#ff758c,#ff7eb3);
-font-family: Arial, Helvetica, sans-serif;
-color:white;
-min-height:100vh;
+      50% {
+        background-position: 100% 50%;
+      }
 
-display:flex;
-align-items:center;
-justify-content:center;
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-padding:20px;
-}
+    .blur {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      filter: blur(40px);
+      z-index: 0;
+      animation: flutuar 7s ease-in-out infinite;
+    }
 
-.card{
+    .blur.um {
+      top: 8%;
+      left: 8%;
+    }
 
-background:rgba(0,0,0,0.2);
+    .blur.dois {
+      bottom: 8%;
+      right: 8%;
+      animation-delay: 2s;
+    }
 
-padding:35px 25px;
+    @keyframes flutuar {
 
-border-radius:20px;
+      0%,
+      100% {
+        transform: translateY(0px) translateX(0px);
+      }
 
-width:100%;
-max-width:420px;
+      50% {
+        transform: translateY(-18px) translateX(12px);
+      }
+    }
 
-text-align:center;
+    .card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 460px;
+      padding: 34px 28px;
+      text-align: center;
+      border-radius: 28px;
+      background: var(--vidro);
+      border: 1px solid var(--borda);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--sombra);
+      overflow: hidden;
+    }
 
-backdrop-filter: blur(6px);
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03));
+      pointer-events: none;
+    }
 
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
+    .top-heart {
+      font-size: 44px;
+      margin-bottom: 12px;
+      display: inline-block;
+      animation: pulse 1.6s infinite;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.35));
+    }
 
-h1{
-font-size:30px;
-margin-bottom:15px;
-}
+    @keyframes pulse {
 
-p{
-font-size:18px;
-line-height:1.5;
-margin-bottom:25px;
-}
+      0%,
+      100% {
+        transform: scale(1);
+      }
 
-button{
+      50% {
+        transform: scale(1.12);
+      }
+    }
 
-padding:14px 28px;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      line-height: 1.2;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    }
 
-border:none;
+    .texto {
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: var(--branco);
+      margin-bottom: 26px;
+    }
 
-border-radius:25px;
+    .destaque {
+      font-weight: 700;
+      color: #fff;
+    }
 
-background:white;
+    button {
+      position: relative;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 15px 30px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 999px;
+      color: #ff3f78;
+      background: white;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+      transition: transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+      overflow: hidden;
+    }
 
-color:#ff4b7d;
+    button:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+    }
 
-font-size:16px;
+    button::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+      transition: .7s;
+    }
 
-cursor:pointer;
+    button:hover::after {
+      left: 100%;
+    }
 
-transition:0.3s;
-}
+    .final {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(16px);
+      transition: max-height .8s ease, opacity .8s ease, transform .8s ease, margin-top .8s ease;
+      margin-top: 0;
+    }
 
-button:hover{
-transform:scale(1.05);
-}
+    .final.show {
+      max-height: 500px;
+      opacity: 1;
+      transform: translateY(0);
+      margin-top: 26px;
+    }
 
-.hidden{
-display:none;
-}
+    .linha {
+      width: 70px;
+      height: 3px;
+      margin: 0 auto 20px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+    }
 
-/* MOBILE EXTRA */
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: #fff;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
 
-@media (max-width:480px){
+    .mensagem-final {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--branco);
+      margin-bottom: 14px;
+    }
 
-h1{
-font-size:26px;
-}
+    .surpresa {
+      margin-top: 8px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.28);
+      animation: brilho 1.7s infinite alternate;
+    }
 
-p{
-font-size:17px;
-}
+    @keyframes brilho {
+      from {
+        transform: scale(1);
+        opacity: .9;
+      }
 
-button{
-font-size:16px;
-padding:14px 24px;
-}
+      to {
+        transform: scale(1.03);
+        opacity: 1;
+      }
+    }
 
-}
+    .assinatura {
+      margin-top: 18px;
+      font-size: .96rem;
+      color: rgba(255, 255, 255, 0.88);
+      font-style: italic;
+    }
 
-</style>
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: subir 3.8s linear forwards;
+      pointer-events: none;
+      z-index: 5;
+    }
 
+    @keyframes subir {
+      0% {
+        transform: translateY(0) scale(0.8) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-110vh) scale(1.4) rotate(30deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width:480px) {
+      .card {
+        padding: 28px 20px;
+        border-radius: 24px;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      .texto,
+      .mensagem-final {
+        font-size: 1rem;
+      }
+
+      h2 {
+        font-size: 1.55rem;
+      }
+
+      button {
+        width: 100%;
+        padding: 15px 20px;
+      }
+
+      .surpresa {
+        font-size: 1.08rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="card">
+  <div class="blur um"></div>
+  <div class="blur dois"></div>
 
-<h1>Oi meu amor ❤️</h1>
+  <div class="card">
+    <div class="top-heart">❤️</div>
 
-<p>
-Eu sei que a gente brigou...  
-Mas você é muito mais importante pra mim do que qualquer discussão.
-</p>
+    <h1>Oi, meu amor</h1>
 
-<button onclick="mostrar()">Clique aqui</button>
+    <p class="texto">
+      Eu sei que a gente brigou...<br><br>
+      Mas, acima de qualquer discussão, de qualquer momento ruim,
+      <span class="destaque">você continua sendo a pessoa mais importante pra mim.</span>
+    </p>
 
-<div id="final" class="hidden">
+    <button id="botao" onclick="mostrarMensagem()">
+      Clique aqui 💌
+    </button>
 
-<br>
+    <div id="final" class="final">
+      <div class="linha"></div>
+      <h2>Me desculpa? 🥺</h2>
 
-<h2 style="font-size:26px;">Me desculpa? 🥺</h2>
+      <p class="mensagem-final">
+        Você é a melhor coisa que aconteceu na minha vida.<br>
+        Seu sorriso, seu jeito, sua presença... tudo em você faz meu mundo ser melhor.
+      </p>
 
-<br>
+      <p class="mensagem-final">
+        Eu não quero guardar orgulho.<br>
+        Eu só quero guardar <span class="destaque">você comigo</span>.
+      </p>
 
-<p>
-Você é a melhor coisa que aconteceu na minha vida.
-</p>
+      <div class="surpresa">Olha atrás de você 🌹🍫</div>
 
-<p style="font-size:20px;">
-Olha atrás de você 🌹🍫
-</p>
+      <div class="assinatura">Com amor, de alguém que te ama de verdade 💖</div>
+    </div>
+  </div>
 
-</div>
+  <script>
+    function mostrarMensagem() {
+      const final = document.getElementById("final");
+      const botao = document.getElementById("botao");
 
-</div>
+      final.classList.add("show");
+      botao.style.opacity = "0.85";
+      botao.innerText = "Eu te amo ❤️";
 
-<script>
+      soltarCoracoes();
+    }
 
-function mostrar(){
-document.getElementById("final").classList.remove("hidden")
-}
+    function soltarCoracoes() {
+      for (let i = 0; i < 24; i++) {
+        setTimeout(() => {
+          const heart = document.createElement("div");
+          heart.classList.add("heart");
+          heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.fontSize = (16 + Math.random() * 20) + "px";
+          heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+          document.body.appendChild(heart);
 
-</script>
+          setTimeout(() => {
+            heart.remove();
+          }, 5000);
+        }, i * 120);
+      }
+    }
+  </script>
 
 </body>
-</html>
 
+</html>
