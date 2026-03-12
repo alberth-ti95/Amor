@@ -1,44 +1,110 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Para Você ❤️</title>
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
-    background: linear-gradient(135deg,#ff758c,#ff7eb3);
-    font-family: Arial;
-    color:white;
-    text-align:center;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+background: linear-gradient(135deg,#ff758c,#ff7eb3);
+font-family: Arial, Helvetica, sans-serif;
+color:white;
+min-height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:20px;
 }
 
 .card{
-    background:rgba(0,0,0,0.2);
-    padding:40px;
-    border-radius:20px;
-    max-width:400px;
+
+background:rgba(0,0,0,0.2);
+
+padding:35px 25px;
+
+border-radius:20px;
+
+width:100%;
+max-width:420px;
+
+text-align:center;
+
+backdrop-filter: blur(6px);
+
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+font-size:30px;
+margin-bottom:15px;
+}
+
+p{
+font-size:18px;
+line-height:1.5;
+margin-bottom:25px;
 }
 
 button{
-    padding:12px 25px;
-    border:none;
-    border-radius:20px;
-    background:white;
-    color:#ff4b7d;
-    font-size:16px;
-    cursor:pointer;
+
+padding:14px 28px;
+
+border:none;
+
+border-radius:25px;
+
+background:white;
+
+color:#ff4b7d;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
 }
 
 .hidden{
 display:none;
 }
 
+/* MOBILE EXTRA */
+
+@media (max-width:480px){
+
+h1{
+font-size:26px;
+}
+
+p{
+font-size:17px;
+}
+
+button{
+font-size:16px;
+padding:14px 24px;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
@@ -56,13 +122,19 @@ Mas você é muito mais importante pra mim do que qualquer discussão.
 
 <div id="final" class="hidden">
 
-<h2>Me desculpa? 🥺</h2>
+<br>
+
+<h2 style="font-size:26px;">Me desculpa? 🥺</h2>
+
+<br>
 
 <p>
 Você é a melhor coisa que aconteceu na minha vida.
 </p>
 
-<p>Olha atrás de você... 🌹🍫</p>
+<p style="font-size:20px;">
+Olha atrás de você 🌹🍫
+</p>
 
 </div>
 
@@ -77,5 +149,4 @@ document.getElementById("final").classList.remove("hidden")
 </script>
 
 </body>
-
 </html>
