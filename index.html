@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Para Você ❤️</title>
+
+<style>
+body{
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    font-family: Arial;
+    color:white;
+    text-align:center;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card{
+    background:rgba(0,0,0,0.2);
+    padding:40px;
+    border-radius:20px;
+    max-width:400px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:20px;
+    background:white;
+    color:#ff4b7d;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.hidden{
+display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Oi meu amor ❤️</h1>
+
+<p>
+Eu sei que a gente brigou...  
+Mas você é muito mais importante pra mim do que qualquer discussão.
+</p>
+
+<button onclick="mostrar()">Clique aqui</button>
+
+<div id="final" class="hidden">
+
+<h2>Me desculpa? 🥺</h2>
+
+<p>
+Você é a melhor coisa que aconteceu na minha vida.
+</p>
+
+<p>Olha atrás de você... 🌹🍫</p>
+
+</div>
+
+</div>
+
+<script>
+
+function mostrar(){
+document.getElementById("final").classList.remove("hidden")
+}
+
+</script>
+
+</body>
+</html>
