@@ -595,27 +595,9 @@
 
     .party-piece {
       position: fixed;
-      top: -40px;
       pointer-events: none;
       z-index: 999;
-      animation: partyFall linear forwards;
       text-shadow: 0 8px 14px rgba(102, 42, 0, 0.18);
-    }
-
-    @keyframes partyFall {
-      0% {
-        transform: translate3d(0, 0, 0) rotate(0deg) scale(0.7);
-        opacity: 0;
-      }
-
-      12% {
-        opacity: 1;
-      }
-
-      100% {
-        transform: translate3d(var(--drift, 0px), 115vh, 0) rotate(280deg) scale(1.25);
-        opacity: 0;
-      }
     }
 
     [hidden] {
@@ -849,7 +831,7 @@
     document.addEventListener("pointerdown", (event) => {
       if (event.target === musicBtn) return;
       const xPercent = (event.clientX / window.innerWidth) * 100;
-      soltarFesta(6, xPercent);
+      soltarFesta(20, xPercent);
     });
 
     function openGift() {
@@ -917,24 +899,49 @@ Voc\u00ea merece um anivers\u00e1rio iluminado e cheio de carinho em cada detalh
 
     function soltarFesta(qtd = 18, originX = null) {
       const symbols = ["🎉", "⭐", "🎈", "🎊", "✨", "🌟"];
-      const colors = ["#fff4c7", "#ffd166", "#ffb347", "#ff8c42"];
 
-      for (let i = 0; i < qtd; i += 1) {
+      for (let i = 0; i < qtd; i++) {
         setTimeout(() => {
           const piece = document.createElement("div");
           piece.className = "party-piece";
-          piece.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
-          const base = originX !== null ? originX : Math.random() * 100;
-          piece.style.left = base + "vw";
-          piece.style.fontSize = 16 + Math.random() * 24 + "px";
-          piece.style.color = colors[Math.floor(Math.random() * colors.length)];
-          piece.style.animationDuration = 2.4 + Math.random() * 2 + "s";
-          piece.style.setProperty("--drift", (Math.random() * 80 - 40) + "px");
+          piece.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+          const startX = originX !== null
+            ? (originX / 100 * window.innerWidth) + (Math.random() * 80 - 40)
+            : Math.random() * window.innerWidth;
+
+          piece.style.left = startX + "px";
+          piece.style.top = "-40px";
+          piece.style.fontSize = (16 + Math.random() * 20) + "px";
+          piece.style.opacity = "1";
           document.body.appendChild(piece);
 
-          setTimeout(() => {
-            piece.remove();
-          }, 5000);
+          const duration = 3000;
+          const drift = Math.random() * 100 - 50;
+          let startTime = null;
+
+          function step(ts) {
+            if (!startTime) startTime = ts;
+            const elapsed = ts - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const y = progress * (window.innerHeight + 80);
+            const x = startX + drift * progress;
+            const rotate = progress * 300;
+            const opacity = progress > 0.8 ? 1 - (progress - 0.8) / 0.2 : 1;
+
+            piece.style.top = y + "px";
+            piece.style.left = x + "px";
+            piece.style.transform = "rotate(" + rotate + "deg) scale(" + (0.7 + progress * 0.5) + ")";
+            piece.style.opacity = opacity;
+
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              piece.remove();
+            }
+          }
+
+          requestAnimationFrame(step);
         }, i * 80);
       }
     }
