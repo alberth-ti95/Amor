@@ -4,9 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Para Você ❤️</title>
+  <title>Feliz Anivers&aacute;rio</title>
 
   <style>
+    :root {
+      --bg-top: #ffd968;
+      --bg-middle: #ffb33f;
+      --bg-bottom: #ff7d29;
+      --card-bg: rgba(255, 249, 238, 0.78);
+      --card-border: rgba(255, 240, 214, 0.9);
+      --text-main: #5c2400;
+      --text-soft: rgba(82, 36, 0, 0.88);
+      --ink-strong: #522000;
+      --accent-1: #ffe291;
+      --accent-2: #ff9d2f;
+      --accent-3: #ff7b22;
+      --accent-4: #fff2bf;
+      --shadow: rgba(103, 43, 0, 0.24);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -19,20 +35,46 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      font-family: "Segoe UI", Arial, sans-serif;
       scroll-behavior: smooth;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
     }
 
     body {
-      color: #fff;
-      background:
-        radial-gradient(circle at top left, rgba(255, 255, 255, 0.15), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.10), transparent 30%),
-        linear-gradient(135deg, #ff4f81, #ff7eb3, #ff9eb5);
-      background-size: 200% 200%;
-      animation: bgMove 10s ease infinite;
       position: relative;
       overflow: hidden;
+      color: var(--text-main);
+      background:
+        radial-gradient(circle at top left, rgba(255, 248, 220, 0.65), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(255, 224, 128, 0.32), transparent 28%),
+        linear-gradient(150deg, var(--bg-top), var(--bg-middle) 52%, var(--bg-bottom));
+      background-size: 190% 190%;
+      animation: bgMove 14s ease-in-out infinite;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.28) 0 2px, transparent 2px),
+        radial-gradient(circle at 82% 26%, rgba(255, 243, 198, 0.25) 0 3px, transparent 3px),
+        radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.22) 0 2px, transparent 2px),
+        radial-gradient(circle at 70% 68%, rgba(255, 231, 173, 0.28) 0 3px, transparent 3px);
+      background-size: 180px 180px;
+      opacity: 0.6;
+    }
+
+    body::after {
+      background:
+        linear-gradient(120deg, transparent 0 35%, rgba(255, 255, 255, 0.12) 35% 42%, transparent 42% 100%);
+      animation: shineSweep 9s linear infinite;
+      opacity: 0.7;
     }
 
     @keyframes bgMove {
@@ -49,42 +91,61 @@
       }
     }
 
+    @keyframes shineSweep {
+      0% {
+        transform: translateX(-30%);
+      }
+
+      100% {
+        transform: translateX(30%);
+      }
+    }
+
     .floating-blur {
       position: absolute;
       border-radius: 50%;
-      filter: blur(50px);
-      opacity: .35;
+      filter: blur(60px);
+      opacity: 0.42;
       pointer-events: none;
       z-index: 0;
-      animation: floatBlob 8s ease-in-out infinite;
+      animation: floatBlob 9s ease-in-out infinite;
     }
 
     .blur1 {
-      width: 240px;
-      height: 240px;
-      background: #fff;
-      top: 5%;
-      left: 8%;
+      width: 250px;
+      height: 250px;
+      top: 4%;
+      left: 6%;
+      background: rgba(255, 250, 214, 0.75);
     }
 
     .blur2 {
-      width: 280px;
-      height: 280px;
-      background: #ffbdd0;
-      right: 5%;
-      bottom: 8%;
+      width: 320px;
+      height: 320px;
+      right: 4%;
+      bottom: 4%;
+      background: rgba(255, 167, 71, 0.55);
       animation-delay: 2s;
+    }
+
+    .blur3 {
+      width: 210px;
+      height: 210px;
+      left: 40%;
+      bottom: 18%;
+      background: rgba(255, 240, 180, 0.35);
+      animation-delay: 4s;
     }
 
     @keyframes floatBlob {
 
       0%,
       100% {
-        transform: translateY(0) translateX(0);
+        transform: translate3d(0, 0, 0) scale(1);
       }
 
       50% {
-        transform: translateY(-18px) translateX(12px);
+        transform: translate3d(14px, -20px, 0) scale(1.06);
       }
     }
 
@@ -96,11 +157,16 @@
       overflow-y: auto;
       scroll-snap-type: y mandatory;
       -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .container::-webkit-scrollbar {
+      display: none;
     }
 
     .section {
       min-height: 100vh;
-      padding: 24px;
+      padding: 28px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -109,34 +175,76 @@
     }
 
     .card {
-      width: 100%;
-      max-width: 430px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-radius: 28px;
-      padding: 30px 22px;
-      text-align: center;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.20);
       position: relative;
       overflow: hidden;
+      width: min(100%, 460px);
+      padding: 34px 24px 30px;
+      border-radius: 30px;
+      text-align: center;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 24px 54px rgba(98, 42, 0, 0.22);
     }
 
-    .card::before {
+    .card::before,
+    .card::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.02));
       pointer-events: none;
     }
 
-    .emoji {
-      font-size: 42px;
-      margin-bottom: 12px;
-      animation: pulse 1.8s infinite;
+    .card::before {
+      inset: 0;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.42), rgba(255, 245, 220, 0.08) 58%);
+    }
+
+    .card::after {
+      width: 180px;
+      height: 180px;
+      top: -70px;
+      right: -50px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 214, 122, 0.18), transparent 70%);
+      opacity: 0.75;
+    }
+
+    .kicker,
+    .emoji,
+    h1,
+    h2,
+    p,
+    .hint,
+    .small-note,
+    .typing-box,
+    .reveal,
+    .final-btn,
+    .gift-wrap {
       position: relative;
       z-index: 1;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 237, 196, 0.72);
+      border: 1px solid rgba(255, 220, 158, 0.88);
+      color: #8a3a00;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .emoji {
+      font-size: 44px;
+      margin-bottom: 14px;
+      animation: pulse 2s ease-in-out infinite;
     }
 
     @keyframes pulse {
@@ -147,49 +255,52 @@
       }
 
       50% {
-        transform: scale(1.10);
+        transform: scale(1.08);
       }
     }
 
     h1,
     h2 {
-      position: relative;
-      z-index: 1;
-      line-height: 1.2;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.15;
+      color: var(--ink-strong);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: clamp(2.2rem, 7vw, 3rem);
       margin-bottom: 14px;
     }
 
     h2 {
-      font-size: 1.6rem;
-      margin-bottom: 12px;
+      font-size: clamp(1.85rem, 5vw, 2.3rem);
+      margin-bottom: 14px;
     }
 
     p {
-      position: relative;
-      z-index: 1;
-      font-size: 1.06rem;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.95);
+      color: var(--text-soft);
+      font-size: 1.04rem;
+      line-height: 1.72;
       margin-bottom: 14px;
     }
 
     .destaque {
+      color: #8f3600;
       font-weight: 800;
-      color: #fff;
     }
 
     .hint {
       margin-top: 18px;
-      font-size: .95rem;
+      color: rgba(96, 44, 0, 0.88);
+      font-size: 0.94rem;
       font-weight: 700;
-      opacity: .95;
-      animation: upDown 1.5s infinite;
-      position: relative;
-      z-index: 1;
+      animation: upDown 1.6s ease-in-out infinite;
+    }
+
+    .arrow {
+      display: block;
+      margin-top: 4px;
+      font-size: 1.5rem;
     }
 
     @keyframes upDown {
@@ -204,38 +315,32 @@
       }
     }
 
-    .arrow {
-      display: block;
-      font-size: 26px;
-      margin-top: 5px;
-    }
-
-    /* botão música */
     .music-btn {
       position: fixed;
       top: 16px;
       right: 16px;
       z-index: 99;
-      width: 54px;
-      height: 54px;
+      width: 56px;
+      height: 56px;
       border: none;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.18);
-      color: #fff;
-      font-size: 22px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+      background: rgba(255, 247, 226, 0.18);
+      color: #fffefa;
+      font-size: 23px;
       cursor: pointer;
-      transition: .25s;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 12px 24px rgba(97, 41, 0, 0.18);
+      transition: transform 0.25s ease, background 0.25s ease;
     }
 
     .music-btn:hover {
-      transform: scale(1.06);
+      transform: scale(1.05);
+      background: rgba(255, 247, 226, 0.25);
     }
 
     .music-btn.playing {
-      animation: spinPulse 2.6s linear infinite;
+      animation: spinPulse 3.4s linear infinite;
     }
 
     @keyframes spinPulse {
@@ -252,116 +357,173 @@
       }
     }
 
-    /* envelope */
-    .envelope-wrap {
+    .gift-wrap {
       display: flex;
       justify-content: center;
-      margin: 14px 0 18px;
-      position: relative;
-      z-index: 1;
+      margin: 16px 0 18px;
     }
 
-    .envelope {
+    .gift-box {
       position: relative;
       width: 220px;
-      height: 150px;
+      height: 200px;
       cursor: pointer;
-      transition: transform .4s ease;
+      transition: transform 0.3s ease;
     }
 
-    .envelope:hover {
-      transform: scale(1.02);
+    .gift-box:hover {
+      transform: translateY(-2px) scale(1.02);
     }
 
-    .env-body {
+    .gift-base,
+    .gift-lid {
       position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 110px;
-      background: linear-gradient(135deg, #ffd9e4, #ffc1d4);
-      border-radius: 0 0 16px 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
-      overflow: hidden;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 20px;
+      box-shadow: 0 18px 32px rgba(114, 48, 0, 0.2);
     }
 
-    .env-front {
-      position: absolute;
-      bottom: 0;
-      width: 0;
-      height: 0;
-      border-left: 110px solid transparent;
-      border-right: 110px solid transparent;
-      border-top: 72px solid #ffafc7;
-      z-index: 3;
-      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.08));
+    .gift-base {
+      bottom: 10px;
+      width: 200px;
+      height: 132px;
+      background: linear-gradient(160deg, #ff9d2f, #ff7b22);
     }
 
-    .env-flap {
-      position: absolute;
-      top: 0;
-      width: 0;
-      height: 0;
-      border-left: 110px solid transparent;
-      border-right: 110px solid transparent;
-      border-bottom: 78px solid #ff8fb1;
-      transform-origin: top center;
-      transition: transform .8s ease;
+    .gift-lid {
+      top: 16px;
+      width: 214px;
+      height: 54px;
+      background: linear-gradient(160deg, #ffd56a, #ffbb38);
+      transform-origin: left center;
+      transition: transform 0.8s ease, top 0.8s ease;
       z-index: 4;
     }
 
-    .letter {
+    .gift-lid::before,
+    .gift-lid::after,
+    .gift-base::before,
+    .gift-base::after {
+      content: "";
+      position: absolute;
+      background: rgba(255, 247, 216, 0.84);
+    }
+
+    .gift-lid::before,
+    .gift-base::before {
+      left: 50%;
+      top: 0;
+      width: 24px;
+      height: 100%;
+      transform: translateX(-50%);
+    }
+
+    .gift-lid::after,
+    .gift-base::after {
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 22px;
+      transform: translateY(-50%);
+    }
+
+    .gift-bow {
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      width: 88px;
+      height: 42px;
+      transform: translateX(-50%);
+      z-index: 5;
+    }
+
+    .gift-bow::before,
+    .gift-bow::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 38px;
+      height: 30px;
+      border: 6px solid rgba(255, 247, 216, 0.92);
+      border-radius: 50px 50px 12px 50px;
+      background: rgba(255, 240, 194, 0.15);
+    }
+
+    .gift-bow::before {
+      left: 2px;
+      transform: rotate(-12deg);
+    }
+
+    .gift-bow::after {
+      right: 2px;
+      transform: scaleX(-1) rotate(-12deg);
+    }
+
+    .gift-card {
       position: absolute;
       left: 50%;
-      top: 38px;
-      transform: translateX(-50%) translateY(30px);
-      width: 180px;
-      height: 95px;
-      background: #fff;
-      color: #ff4f81;
-      border-radius: 12px;
+      top: 66px;
+      width: 166px;
+      min-height: 96px;
+      padding: 14px;
+      border-radius: 16px;
+      background: #fff8e9;
+      color: var(--ink-strong);
+      font-weight: 800;
+      font-size: 0.98rem;
+      line-height: 1.35;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 14px;
-      font-weight: 700;
-      font-size: .98rem;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
-      transition: transform .9s ease;
+      transform: translateX(-50%) translateY(26px);
+      box-shadow: 0 12px 24px rgba(109, 46, 0, 0.18);
+      transition: transform 0.8s ease;
       z-index: 2;
     }
 
-    .envelope.open .env-flap {
-      transform: rotateX(180deg);
+    .gift-box.open .gift-lid {
+      top: -6px;
+      transform: translateX(-50%) rotate(-14deg);
     }
 
-    .envelope.open .letter {
-      transform: translateX(-50%) translateY(-55px);
+    .gift-box.open .gift-card {
+      transform: translateX(-50%) translateY(-18px);
     }
 
-    /* digitação */
+    .message-reveal {
+      margin-top: 10px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255, 244, 218, 0.86);
+      border: 1px solid rgba(255, 219, 161, 0.9);
+      color: #663000;
+      font-weight: 600;
+    }
+
     .typing-box {
-      min-height: 180px;
+      min-height: 220px;
       text-align: left;
-      background: rgba(255, 255, 255, 0.10);
-      border: 1px solid rgba(255, 255, 255, 0.20);
-      padding: 18px;
-      border-radius: 20px;
-      position: relative;
-      z-index: 1;
+      padding: 20px 18px;
+      border-radius: 22px;
+      background: rgba(255, 248, 232, 0.9);
+      border: 1px solid rgba(255, 221, 167, 0.88);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
     }
 
     .typing-text {
       white-space: pre-line;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #fff;
+      color: #572300;
+      font-size: 1.04rem;
+      line-height: 1.9;
     }
 
     .cursor {
       display: inline-block;
       width: 10px;
-      animation: blink 0.8s infinite;
+      color: #d36918;
+      animation: blink 0.9s infinite;
     }
 
     @keyframes blink {
@@ -377,25 +539,29 @@
       }
     }
 
-    /* final */
+    .small-note {
+      margin-top: 12px;
+      font-size: 0.92rem;
+      color: rgba(97, 47, 7, 0.82);
+    }
+
     .final-btn {
       border: none;
-      background: #fff;
-      color: #ff4b7d;
-      font-weight: 800;
-      padding: 15px 28px;
+      margin-top: 8px;
+      padding: 16px 28px;
       border-radius: 999px;
+      background: linear-gradient(135deg, #fff2bf, #ffe08d);
+      color: var(--ink-strong);
       font-size: 1rem;
+      font-weight: 900;
       cursor: pointer;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-      transition: .25s;
-      margin-top: 6px;
-      position: relative;
-      z-index: 1;
+      box-shadow: 0 14px 28px rgba(100, 43, 0, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .final-btn:hover {
-      transform: translateY(-2px) scale(1.03);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 18px 34px rgba(100, 43, 0, 0.22);
     }
 
     .reveal {
@@ -403,297 +569,306 @@
       opacity: 0;
       overflow: hidden;
       transform: translateY(10px);
-      transition: .7s ease;
+      transition: max-height 0.7s ease, opacity 0.7s ease, transform 0.7s ease, margin-top 0.7s ease;
     }
 
     .reveal.show {
-      max-height: 300px;
+      max-height: 280px;
       opacity: 1;
       margin-top: 18px;
       transform: translateY(0);
     }
 
     .surpresa {
-      font-size: 1.22rem;
-      font-weight: 900;
-      color: #fff;
-      text-shadow: 0 0 12px rgba(255, 255, 255, 0.32);
       margin-top: 8px;
+      font-size: 1.28rem;
+      font-weight: 900;
+      color: #7a2f00;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.42);
     }
 
     .assinatura {
       margin-top: 12px;
-      font-size: .95rem;
-      opacity: .92;
+      color: rgba(96, 44, 0, 0.82);
+      font-size: 0.95rem;
       font-style: italic;
     }
 
-    /* corações */
-    .heart-float {
+    .party-piece {
       position: fixed;
-      bottom: -20px;
-      font-size: 20px;
+      bottom: -26px;
       pointer-events: none;
       z-index: 999;
-      animation: heartUp linear forwards;
+      animation: partyRise linear forwards;
+      text-shadow: 0 8px 14px rgba(102, 42, 0, 0.18);
     }
 
-    @keyframes heartUp {
+    @keyframes partyRise {
       0% {
-        transform: translateY(0) scale(0.8) rotate(0deg);
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(0.7);
         opacity: 0;
       }
 
-      10% {
+      12% {
         opacity: 1;
       }
 
       100% {
-        transform: translateY(-110vh) scale(1.5) rotate(25deg);
+        transform: translate3d(var(--drift, 0px), -110vh, 0) rotate(220deg) scale(1.25);
         opacity: 0;
       }
     }
 
-    /* mini indicador no fim */
-    .small-note {
-      margin-top: 10px;
-      font-size: .9rem;
-      opacity: .88;
-      position: relative;
-      z-index: 1;
+    [hidden] {
+      display: none !important;
     }
 
-    @media (max-width:480px) {
+    @media (max-width: 480px) {
+      .section {
+        padding: 24px 16px;
+      }
+
       .card {
-        padding: 28px 18px;
-        border-radius: 24px;
+        padding: 30px 18px 26px;
+        border-radius: 26px;
       }
 
-      h1 {
-        font-size: 1.7rem;
-      }
-
-      h2 {
-        font-size: 1.42rem;
+      .kicker {
+        font-size: 0.74rem;
+        letter-spacing: 0.1em;
       }
 
       p,
       .typing-text {
-        font-size: 1rem;
+        font-size: 0.99rem;
       }
 
-      .envelope {
+      .gift-box {
         width: 200px;
-        height: 140px;
+        height: 188px;
       }
 
-      .env-front {
-        border-left: 100px solid transparent;
-        border-right: 100px solid transparent;
-        border-top: 68px solid #ffafc7;
+      .gift-base {
+        width: 182px;
+        height: 124px;
       }
 
-      .env-flap {
-        border-left: 100px solid transparent;
-        border-right: 100px solid transparent;
-        border-bottom: 74px solid #ff8fb1;
+      .gift-lid {
+        width: 194px;
       }
 
-      .letter {
-        width: 166px;
+      .gift-card {
+        width: 152px;
+        font-size: 0.92rem;
       }
 
       .music-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
+        width: 52px;
+        height: 52px;
+        font-size: 21px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
       }
     }
   </style>
 </head>
 
 <body>
-
   <div class="floating-blur blur1"></div>
   <div class="floating-blur blur2"></div>
+  <div class="floating-blur blur3"></div>
 
-  <button class="music-btn" id="musicBtn" aria-label="Tocar música">🎵</button>
+  <button class="music-btn" id="musicBtn" aria-label="Tocar m&uacute;sica">&#127925;</button>
 
-  <!-- Coloque sua música romântica com o nome musica.mp3 na mesma pasta -->
+  <!-- Se quiser, troque pela musica de aniversario que preferir. -->
   <audio id="bgMusic" loop>
     <source src="https://github.com/alberth-ti95/Amor/raw/refs/heads/main/Musica_love.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="container" id="container">
-
-    <!-- TELA 1 -->
+  <div class="container">
     <section class="section">
       <div class="card">
-        <div class="emoji">❤️</div>
-        <h1>Oi, meu amor</h1>
+        <div class="kicker">dia especial</div>
+        <div class="emoji">&#127874;</div>
+        <h1>Hoje o brilho &eacute; todinho seu</h1>
         <p>
-          Eu preparei isso com carinho só pra você...
+          Preparei essa surpresa para comemorar <span class="destaque">o seu anivers&aacute;rio</span> com alegria e
+          coração palpitante.
         </p>
         <p>
-          Então <span class="destaque">desliza pra cima</span> e deixa eu falar com o meu coração.
+          Desliza pra cima e vem abrir essa mini festa feita em tons de amarelo e laranja, do jeitinho que você gosta.
         </p>
 
         <div class="hint">
           Deslize para cima
-          <span class="arrow">⬆️</span>
+          <span class="arrow">&#11014;</span>
         </div>
       </div>
     </section>
 
-    <!-- TELA 2 -->
     <section class="section">
       <div class="card">
-        <div class="emoji">💌</div>
-        <h2>Abra minha carta</h2>
-        <p>Toca no envelope...</p>
+        <div class="kicker">primeiro mimo</div>
+        <div class="emoji">&#127873;</div>
+        <h2>Abra seu presente</h2>
+        <p>Toca na caixinha para revelar o primeiro recado.</p>
 
-        <div class="envelope-wrap">
-          <div class="envelope" id="envelope">
-            <div class="env-flap"></div>
-            <div class="letter">Tem uma mensagem aqui dentro só pra você 💖</div>
-            <div class="env-body"></div>
-            <div class="env-front"></div>
+        <div class="gift-wrap">
+          <div class="gift-box" id="giftBox" aria-label="Abrir presente" role="button" tabindex="0">
+            <div class="gift-card">Tem um bilhetinho especial aqui dentro</div>
+            <div class="gift-lid">
+              <div class="gift-bow"></div>
+            </div>
+            <div class="gift-base"></div>
           </div>
         </div>
 
-        <p id="envelopeText" style="display:none;">
-          Mesmo quando a gente briga, meu coração continua escolhendo você.
+        <p class="message-reveal" id="giftMessage" hidden>
+          Que o seu novo ciclo chegue carregado de leveza, sa&uacute;de, sorte, risadas boas e um mont&atilde;o de
+          motivos pra sorrir.
         </p>
 
         <div class="hint">
           Depois deslize para cima
-          <span class="arrow">⬆️</span>
+          <span class="arrow">&#11014;</span>
         </div>
       </div>
     </section>
 
-    <!-- TELA 3 -->
     <section class="section">
       <div class="card">
-        <div class="emoji">🥺</div>
-        <h2>O que eu queria te dizer...</h2>
+        <div class="kicker">meus desejos</div>
+        <div class="emoji">&#127881;</div>
+        <h2>O que eu desejo pra voc&ecirc;...</h2>
 
         <div class="typing-box">
           <div class="typing-text" id="typingText"></div>
         </div>
 
-        <div class="small-note">desliza mais um pouquinho...</div>
+        <div class="small-note">desliza mais um pouquinho, a surpresa continua...</div>
       </div>
     </section>
 
-    <!-- TELA 4 -->
     <section class="section">
       <div class="card">
-        <div class="emoji">🌹</div>
-        <h2>Me perdoa?</h2>
+        <div class="kicker">hora da festa</div>
+        <div class="emoji">&#10024;</div>
+        <h2>Mais um motivo pra sorrir</h2>
         <p>
-          Você é a melhor coisa que aconteceu na minha vida.
+          Seu anivers&aacute;rio merece cor, bolo, abra&ccedil;os apertados e aqueles momentos que ficam na
+          mem&oacute;ria.
         </p>
         <p>
-          Eu não quero guardar orgulho...
-          eu só quero guardar <span class="destaque">você comigo</span>.
+          Voc&ecirc; ilumina a vida de quem est&aacute; por perto, e hoje a festa inteira acompanha essa luz.
         </p>
 
-        <button class="final-btn" id="forgiveBtn">Me perdoa? 🥺</button>
+        <button class="final-btn" id="surpriseBtn" type="button">Soltar surpresa</button>
 
         <div class="reveal" id="finalReveal">
-          <p class="surpresa">Olha atrás de você 🌹🍫</p>
-          <p class="assinatura">Feito com amor, por alguém que te ama de verdade ❤️</p>
+          <p class="surpresa">Feliz anivers&aacute;rio! Que seu dia seja t&atilde;o bonito quanto o seu sorriso.</p>
+          <p class="surpresa">🎂</p>
+          <p class="assinatura">Feito com carinho para uma pessoa muito especial.</p>
         </div>
       </div>
     </section>
-
   </div>
 
   <script>
     const musicBtn = document.getElementById("musicBtn");
     const bgMusic = document.getElementById("bgMusic");
-    // let musicStarted = false;
-
-    function startMusicOnce() {
-
-      if (!musicStarted) {
-
-        bgMusic.play().then(() => {
-
-          musicStarted = true;
-
-          musicBtn.classList.add("playing");
-          musicBtn.innerHTML = "🎶";
-
-        }).catch(() => { });
-
-      }
-
-    }
-
-    document.addEventListener("click", startMusicOnce, { once: true });
-    document.addEventListener("touchstart", startMusicOnce, { once: true });
-    const envelope = document.getElementById("envelope");
-    const envelopeText = document.getElementById("envelopeText");
+    const musicSource = bgMusic.querySelector("source");
+    const giftBox = document.getElementById("giftBox");
+    const giftMessage = document.getElementById("giftMessage");
     const typingText = document.getElementById("typingText");
-    const forgiveBtn = document.getElementById("forgiveBtn");
+    const surpriseBtn = document.getElementById("surpriseBtn");
     const finalReveal = document.getElementById("finalReveal");
+    const sections = document.querySelectorAll(".section");
 
     let musicStarted = false;
     let typedStarted = false;
+    let giftOpened = false;
 
-    // botão de música
-    musicBtn.addEventListener("click", async () => {
+    async function toggleMusic(forceStart = false) {
+      if (!musicSource || !musicSource.src) {
+        musicBtn.hidden = true;
+        return;
+      }
+
       try {
-        if (bgMusic.paused) {
+        if (forceStart || bgMusic.paused) {
           await bgMusic.play();
           musicBtn.classList.add("playing");
-          musicBtn.innerHTML = "🎶";
+          musicBtn.innerHTML = "&#127926;";
           musicStarted = true;
         } else {
           bgMusic.pause();
           musicBtn.classList.remove("playing");
-          musicBtn.innerHTML = "🎵";
+          musicBtn.innerHTML = "&#127925;";
         }
-      } catch (e) {
-        console.log("Música bloqueada até interação do usuário.");
-      }
-    });
-
-    // tenta iniciar música no primeiro toque/scroll
-    function startMusicOnce() {
-      if (!musicStarted) {
-        bgMusic.play().then(() => {
-          musicBtn.classList.add("playing");
-          musicBtn.innerHTML = "🎶";
-          musicStarted = true;
-        }).catch(() => { });
+      } catch (error) {
+        console.log("A musica depende de uma interacao do usuario.");
       }
     }
 
-    document.addEventListener("touchstart", startMusicOnce, { once: true });
-    document.addEventListener("click", startMusicOnce, { once: true });
+    function startMusicOnce() {
+      if (!musicStarted) {
+        toggleMusic(true);
+      }
+    }
 
-    // envelope abrindo
-    envelope.addEventListener("click", () => {
-      envelope.classList.toggle("open");
-      envelopeText.style.display = "block";
-      soltarCoracoes(12);
+    musicBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleMusic();
     });
 
-    // efeito digitando
-    const mensagem = `Eu sei que a gente brigou...
-Mas você é muito mais importante pra mim do que qualquer discussão.
+    function handleFirstInteraction(event) {
+      if (event.target === musicBtn) {
+        return;
+      }
 
-Seu sorriso, seu jeito, sua presença, a nossa família...
-tudo isso faz meu mundo ser melhor.
+      startMusicOnce();
+      document.removeEventListener("pointerdown", handleFirstInteraction);
+    }
 
-Se eu errei, me desculpa.
-Porque no fim de tudo,
-é você que eu quero.`;
+    document.addEventListener("pointerdown", handleFirstInteraction);
 
-    function typeWriter(text, element, speed = 40) {
+    function openGift() {
+      if (giftOpened) {
+        return;
+      }
+
+      giftOpened = true;
+      giftBox.classList.add("open");
+      giftMessage.hidden = false;
+      soltarFesta(10);
+    }
+
+    giftBox.addEventListener("click", openGift);
+    giftBox.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openGift();
+      }
+    });
+
+    const mensagem = `Hoje \u00e9 dia de celebrar voc\u00ea.
+
+Que esse novo ciclo venha cheio de paz, sa\u00fade, coragem e sonhos se realizando no tempo certo.
+
+Que n\u00e3o faltem gargalhadas sinceras, momentos leves e aquela sensa\u00e7\u00e3o gostosa de estar vivendo algo bonito.
+
+Voc\u00ea merece um anivers\u00e1rio iluminado e cheio de carinho em cada detalhe.`;
+
+    function typeWriter(text, element, speed = 34) {
       let i = 0;
       element.innerHTML = "";
 
@@ -701,7 +876,7 @@ Porque no fim de tudo,
         if (i < text.length) {
           const char = text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
           element.innerHTML += char;
-          i++;
+          i += 1;
           setTimeout(escrever, speed);
         } else {
           element.innerHTML += '<span class="cursor">|</span>';
@@ -711,45 +886,47 @@ Porque no fim de tudo,
       escrever();
     }
 
-    // inicia digitação ao entrar na tela 3
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    const observer = new IntersectionObserver((entries, currentObserver) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting && !typedStarted) {
           typedStarted = true;
-          typeWriter(mensagem, typingText, 36);
+          typeWriter(mensagem, typingText, 32);
+          currentObserver.disconnect();
         }
       });
     }, { threshold: 0.55 });
 
-    observer.observe(document.querySelectorAll(".section")[2]);
+    observer.observe(sections[2]);
 
-    // botão final
-    forgiveBtn.addEventListener("click", () => {
+    surpriseBtn.addEventListener("click", () => {
       finalReveal.classList.add("show");
-      forgiveBtn.innerText = "Eu te amo ❤️";
-      soltarCoracoes(22);
+      surpriseBtn.textContent = "Parab\u00e9ns!";
+      soltarFesta(24);
     });
 
-    function soltarCoracoes(qtd = 16) {
-      for (let i = 0; i < qtd; i++) {
+    function soltarFesta(qtd = 18) {
+      const symbols = ["&#10024;", "&#9733;", "&#127880;", "&#127881;"];
+      const colors = ["#fff4c7", "#ffd166", "#ffb347", "#ff8c42"];
+
+      for (let i = 0; i < qtd; i += 1) {
         setTimeout(() => {
-          const heart = document.createElement("div");
-          heart.className = "heart-float";
-          heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
-          heart.style.left = Math.random() * 100 + "vw";
-          heart.style.fontSize = (16 + Math.random() * 22) + "px";
-          heart.style.animationDuration = (3 + Math.random() * 2.2) + "s";
-          document.body.appendChild(heart);
+          const piece = document.createElement("div");
+          piece.className = "party-piece";
+          piece.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+          piece.style.left = Math.random() * 100 + "vw";
+          piece.style.fontSize = 16 + Math.random() * 24 + "px";
+          piece.style.color = colors[Math.floor(Math.random() * colors.length)];
+          piece.style.animationDuration = 3.2 + Math.random() * 2.4 + "s";
+          piece.style.setProperty("--drift", (Math.random() * 120 - 60) + "px");
+          document.body.appendChild(piece);
 
           setTimeout(() => {
-            heart.remove();
-          }, 5200);
-        }, i * 120);
+            piece.remove();
+          }, 6000);
+        }, i * 110);
       }
     }
   </script>
-
 </body>
 
 </html>
-
