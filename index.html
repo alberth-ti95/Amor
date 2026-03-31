@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
@@ -165,7 +166,7 @@
 
     .section {
       min-height: 100vh;
-      padding: 28px 20px;
+      padding: 28px 20px 60px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -571,7 +572,7 @@
     }
 
     .reveal.show {
-      max-height: 280px;
+      max-height: 500px;
       opacity: 1;
       margin-top: 18px;
       transform: translateY(0);
@@ -594,14 +595,14 @@
 
     .party-piece {
       position: fixed;
-      bottom: -26px;
+      top: -40px;
       pointer-events: none;
       z-index: 999;
-      animation: partyRise linear forwards;
+      animation: partyFall linear forwards;
       text-shadow: 0 8px 14px rgba(102, 42, 0, 0.18);
     }
 
-    @keyframes partyRise {
+    @keyframes partyFall {
       0% {
         transform: translate3d(0, 0, 0) rotate(0deg) scale(0.7);
         opacity: 0;
@@ -612,7 +613,7 @@
       }
 
       100% {
-        transform: translate3d(var(--drift, 0px), -110vh, 0) rotate(220deg) scale(1.25);
+        transform: translate3d(var(--drift, 0px), 115vh, 0) rotate(280deg) scale(1.25);
         opacity: 0;
       }
     }
@@ -678,6 +679,7 @@
       }
     }
   </style>
+
 </head>
 
 <body>
@@ -685,9 +687,10 @@
   <div class="floating-blur blur2"></div>
   <div class="floating-blur blur3"></div>
 
-  <button class="music-btn" id="musicBtn" aria-label="Tocar m&uacute;sica">&#127925;</button>
+<button class="music-btn" id="musicBtn" aria-label="Tocar m&uacute;sica">🎵</button>
 
   <!-- Se quiser, troque pela musica de aniversario que preferir. -->
+
   <audio id="bgMusic" loop>
     <source src="https://github.com/alberth-ti95/Amor/raw/refs/heads/main/musica_mp3.mp3" type="audio/mpeg">
   </audio>
@@ -706,79 +709,82 @@
           Desliza pra cima e vem abrir essa mini festa feita em tons de amarelo e laranja, do jeitinho que você gosta.
         </p>
 
-        <div class="hint">
-          Deslize para cima
-          <span class="arrow">&#11014;</span>
+```
+    <div class="hint">
+      Deslize para cima
+      <span class="arrow">&#11014;</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="card">
+    <div class="kicker">primeiro mimo</div>
+    <div class="emoji">&#127873;</div>
+    <h2>Abra seu presente</h2>
+    <p>Toca na caixinha para revelar o primeiro recado.</p>
+
+    <div class="gift-wrap">
+      <div class="gift-box" id="giftBox" aria-label="Abrir presente" role="button" tabindex="0">
+        <div class="gift-card">Tem um bilhetinho especial aqui dentro</div>
+        <div class="gift-lid">
+          <div class="gift-bow"></div>
         </div>
+        <div class="gift-base"></div>
       </div>
-    </section>
+    </div>
 
-    <section class="section">
-      <div class="card">
-        <div class="kicker">primeiro mimo</div>
-        <div class="emoji">&#127873;</div>
-        <h2>Abra seu presente</h2>
-        <p>Toca na caixinha para revelar o primeiro recado.</p>
+    <p class="message-reveal" id="giftMessage" hidden>
+      Que o seu novo ciclo chegue carregado de leveza, sa&uacute;de, sorte, risadas boas e um mont&atilde;o de
+      motivos pra sorrir.
+    </p>
 
-        <div class="gift-wrap">
-          <div class="gift-box" id="giftBox" aria-label="Abrir presente" role="button" tabindex="0">
-            <div class="gift-card">Tem um bilhetinho especial aqui dentro</div>
-            <div class="gift-lid">
-              <div class="gift-bow"></div>
-            </div>
-            <div class="gift-base"></div>
-          </div>
-        </div>
+    <div class="hint">
+      Depois deslize para cima
+      <span class="arrow">&#11014;</span>
+    </div>
+  </div>
+</section>
 
-        <p class="message-reveal" id="giftMessage" hidden>
-          Que o seu novo ciclo chegue carregado de leveza, sa&uacute;de, sorte, risadas boas e um mont&atilde;o de
-          motivos pra sorrir.
-        </p>
+<section class="section">
+  <div class="card">
+    <div class="kicker">meus desejos</div>
+    <div class="emoji">&#127881;</div>
+    <h2>O que eu desejo pra voc&ecirc;...</h2>
 
-        <div class="hint">
-          Depois deslize para cima
-          <span class="arrow">&#11014;</span>
-        </div>
-      </div>
-    </section>
+    <div class="typing-box">
+      <div class="typing-text" id="typingText"></div>
+    </div>
 
-    <section class="section">
-      <div class="card">
-        <div class="kicker">meus desejos</div>
-        <div class="emoji">&#127881;</div>
-        <h2>O que eu desejo pra voc&ecirc;...</h2>
+    <div class="small-note">desliza mais um pouquinho, a surpresa continua...</div>
+  </div>
+</section>
 
-        <div class="typing-box">
-          <div class="typing-text" id="typingText"></div>
-        </div>
+<section class="section">
+  <div class="card">
+    <div class="kicker">hora da festa</div>
+    <div class="emoji">&#10024;</div>
+    <h2>Mais um motivo pra sorrir</h2>
+    <p>
+      Seu anivers&aacute;rio merece cor, bolo, abra&ccedil;os apertados e aqueles momentos que ficam na
+      mem&oacute;ria.
+    </p>
+    <p>
+      Voc&ecirc; ilumina a vida de quem est&aacute; por perto, e hoje a festa inteira acompanha essa luz.
+    </p>
 
-        <div class="small-note">desliza mais um pouquinho, a surpresa continua...</div>
-      </div>
-    </section>
+    <button class="final-btn" id="surpriseBtn" type="button">Soltar surpresa</button>
 
-    <section class="section">
-      <div class="card">
-        <div class="kicker">hora da festa</div>
-        <div class="emoji">&#10024;</div>
-        <h2>Mais um motivo pra sorrir</h2>
-        <p>
-          Seu anivers&aacute;rio merece cor, bolo, abra&ccedil;os apertados e aqueles momentos que ficam na
-          mem&oacute;ria.
-        </p>
-        <p>
-          Voc&ecirc; ilumina a vida de quem est&aacute; por perto, e hoje a festa inteira acompanha essa luz.
-        </p>
+    <div class="reveal" id="finalReveal">
+      <p class="surpresa">Feliz anivers&aacute;rio! Que seu dia seja t&atilde;o bonito quanto o seu sorriso.</p>
+      <p class="surpresa">🎂</p>
+      <p class="surpresa">💝 Tem um presentinho na sua conta 💝</p>
+      <p class="assinatura">Feito com carinho para uma pessoa muito especial.</p>
+    </div>
+  </div>
+</section>
+```
 
-        <button class="final-btn" id="surpriseBtn" type="button">Soltar surpresa</button>
-
-        <div class="reveal" id="finalReveal">
-          <p class="surpresa">Feliz anivers&aacute;rio! Que seu dia seja t&atilde;o bonito quanto o seu sorriso.</p>
-          <p class="surpresa">🎂</p>
-          <p class="surpresa">💝 Tem um presentinho na sua conta 💝</p>
-          <p class="assinatura">Feito com carinho para uma pessoa muito especial.</p>
-        </div>
-      </div>
-    </section>
   </div>
 
   <script>
@@ -840,6 +846,12 @@
 
     document.addEventListener("pointerdown", handleFirstInteraction);
 
+    document.addEventListener("pointerdown", (event) => {
+      if (event.target === musicBtn) return;
+      const xPercent = (event.clientX / window.innerWidth) * 100;
+      soltarFesta(6, xPercent);
+    });
+
     function openGift() {
       if (giftOpened) {
         return;
@@ -900,11 +912,11 @@ Voc\u00ea merece um anivers\u00e1rio iluminado e cheio de carinho em cada detalh
     surpriseBtn.addEventListener("click", () => {
       finalReveal.classList.add("show");
       surpriseBtn.textContent = "Parab\u00e9ns!";
-      soltarFesta(24);
+      soltarFesta(24, 50);
     });
 
-    function soltarFesta(qtd = 18) {
-      const symbols = ["&#10024;", "&#9733;", "&#127880;", "&#127881;"];
+    function soltarFesta(qtd = 18, originX = null) {
+      const symbols = ["🎉", "⭐", "🎈", "🎊", "✨", "🌟"];
       const colors = ["#fff4c7", "#ffd166", "#ffb347", "#ff8c42"];
 
       for (let i = 0; i < qtd; i += 1) {
@@ -912,20 +924,22 @@ Voc\u00ea merece um anivers\u00e1rio iluminado e cheio de carinho em cada detalh
           const piece = document.createElement("div");
           piece.className = "party-piece";
           piece.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
-          piece.style.left = Math.random() * 100 + "vw";
+          const base = originX !== null ? originX : Math.random() * 100;
+          piece.style.left = base + "vw";
           piece.style.fontSize = 16 + Math.random() * 24 + "px";
           piece.style.color = colors[Math.floor(Math.random() * colors.length)];
-          piece.style.animationDuration = 3.2 + Math.random() * 2.4 + "s";
-          piece.style.setProperty("--drift", (Math.random() * 120 - 60) + "px");
+          piece.style.animationDuration = 2.4 + Math.random() * 2 + "s";
+          piece.style.setProperty("--drift", (Math.random() * 80 - 40) + "px");
           document.body.appendChild(piece);
 
           setTimeout(() => {
             piece.remove();
-          }, 6000);
-        }, i * 110);
+          }, 5000);
+        }, i * 80);
       }
     }
   </script>
+
 </body>
 
 </html>
